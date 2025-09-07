@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest Profile</title>
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Pinterest Clone</h1>
+    <nav>
+      <a href="/profile">Home</a> |
+      <a href="/feed">Explore</a> |
+      <a href="/create">Create</a> |
+      <a href="/logout">Log out</a>
+    </nav>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="text" name="filecaption" placeholder="some caption">
+      <input type="file" name="file">
+      <button type="submit">Upload</button>
+    </form>
+  </header>
+
+  <!-- Profile Section -->
+  <main>
+    <section>
+      <img src="<%= user.profilePic || 'https://via.placeholder.com/100' %>" alt="Profile Picture" width="100" height="100">
+      <h2><%= user.fullName %></h2>
+      <p>@<%= user.username %></p>
+      <p><%= user.bio || "No bio added yet." %></p>
+      <p><strong><%= user.followers ? user.followers.length : 0 %></strong> Followers</p>
+      <p><strong><%= user.following ? user.following.length : 0 %></strong> Following</p>
+    </section>
+
+    <!-- My Uploads -->
+    <section>
+      <h3>My Uploads</h3>
+      <ul>
+        <% if (user.posts && user.posts.length > 0) { %>
+          <% user.posts.forEach(post => { %>
+            <li>
+              <img src="/images/uploads/<%= post.image %>" alt="<%= post.imageText %>" width="170">
+              <p><%= post.imageText %></p>
+            </li>
+          <% }) %>
+        <% } else { %>
+          <p>No uploads yet.</p>
+        <% } %>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

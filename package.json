@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^17.2.1",
@@ -15,7 +16,9 @@
     "http-errors": "~1.6.3",
     "mongoose": "^8.18.0",
     "morgan": "~1.9.1",
+    "multer": "^2.0.2",
     "passport": "^0.7.0",
-    "passport-local-mongoose": "^8.0.0"
+    "passport-local-mongoose": "^8.0.0",
+    "uuid": "^12.0.0"
   }
 }

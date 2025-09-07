@@ -10,7 +10,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true
   },
-  posts: [],
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post"
+    }
+  ],
   dp: {
     type: String,
     default: ""
@@ -29,6 +34,6 @@ const userSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-userSchema.plugin(plm); // handles password, hash, salt
+userSchema.plugin(plm); 
 
 module.exports = mongoose.model('User', userSchema);
